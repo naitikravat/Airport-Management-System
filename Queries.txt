@@ -1,0 +1,77 @@
+												Airport Management System
+													Select Queries
+
+Group Details (G3_2):
+202101171-Divyam Oza
+202101177-Jainam Shah (Group representative)
+202101181-Juhi Andharia
+202101212-Naitik Ravat
+202101214-Harikrushna Suhagiya
+
+Representative Contact Number - 9925787749
+
+Queries:
+
+1. List of flights that are currently airborne from the airport.
+
+	(select flight_no as diff,scheduled_arrival from flight where (EXTRACT(hour from scheduled_arrival)-6) between -2 and 0
+	except
+	(select flight_no as diff,scheduled_arrival from flight where (EXTRACT(hour from scheduled_arrival)=6) and (EXTRACT(minute from scheduled_arrival)=00) and (EXTRACT(second from 	scheduled_arrival)=00))
+	except
+	(select flight_no as diff,scheduled_arrival from flight where status='Cancelled'))
+	union 
+	((select flight_no as diff,departure_time from flight where(EXTRACT(hour from departure_time)-6) between 0 and 2)
+	except
+	(select flight_no as diff,departure_time from flight where (EXTRACT(hour from departure_time)=6) and (EXTRACT(minute from departure_time)=00) and (EXTRACT(second from 	departure_time)=00))
+	except
+	(select flight_no as diff,departure_time from flight where status='Cancelled'));
+
+
+2. List of flights that have been cancelled for departing.
+
+	select flight_no from flight where status='Cancelled' and departure_time is not NULL;
+
+3. Give the destination and flight no of the given passenger ID.
+
+	select flight_no, destination from flight natural join passenger where passenger_ID=181;
+
+4. Assigned department of an airport employee with emp id:
+
+	select dname from airport_department_data natural join employee where id=9;
+
+5. Contributed weight of baggage by a single passenger and its extra charges if any.(set the limit for baggage, if total weight of baggage     exceeds limit then charge 500 rupees per KG)
+
+	select passenger_id , 500*(weight-15) as Extra_charges from baggage_and_cargo where weight>15
+	except
+	(select passenger_id , 500*(weight-15) from baggage_and_cargo where weight>15 and luggage_type='Cargo');
+
+6. Available runway for a given flight.
+
+	select runway_no from flight natural join runway_data where flight_no= 'G86547' and maintainance_status='Accessible';
+
+7. Give the gate no for the given passenger
+
+	select distinct Gate_no from gate natural join airline natural join flight natural join passenger where passenger_id=214;
+
+8. Name the airline that has the best on-time performance.
+
+	select c.airline_name,count from (select airline_name,count(status) from flight where status='Scheduled' group by airline_name) as c
+	join
+	(select max(count) from (select airline_name,count(status) from flight where status='Scheduled' group by airline_name) as cnt) as m 	on count=max;
+
+9. Find the name and ID of the nearest shop for the consumer to buy their preferred item.
+
+	select Distinct shop_no, shop_name from passenger natural join flight natural join airline natural join gate 
+	join vendor on gate_no=nearby_gate where passenger_id=203 and category='Food';
+
+10. List of flight_no that are scheduled for departure at a given time.
+
+	select flight_no from flight where departure_time='02:36:00' and status='Scheduled';
+
+11. Print dno,dname and Count of queries solved by airport departments in descending order.
+
+	select dno,dname,count(status) as no_of_query_solved from airport_department_data natural join inquiry where status='Solved' group by dno order by count(status) desc;
+
+12. Passenger details whose items have been seized
+
+	Select passenger_id,first_name,last_name,contact_no from passenger natural join security natural join contact_no;

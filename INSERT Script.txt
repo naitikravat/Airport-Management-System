@@ -1,0 +1,140 @@
+									Airport Management System
+
+Group Details (G3_2):
+202101171-Divyam Oza
+202101177-Jainam Shah (Group representative)
+202101181-Juhi Andharia
+202101212-Naitik Ravat
+202101214-Harikrushna Suhagiya
+
+Representative Contact Number - 9925787749
+
+Data INSERT scripts:
+
+-> Passenger:
+
+INSERT INTO Passenger VALUES
+(101,'Sampson','Karmen','MacGregor','Female',54,6E2086);
+INSERT INTO Passenger VALUES
+(102,'Conrad','Joline','Sarten','Female', 83,6E2086);
+INSERT INTO Passenger VALUES
+(103,'Dwayne','Keefe','Milmoe','Male',22,6E2086);
+
+
+-> email:
+
+INSERT INTO email VALUES
+(101,'sampson.karmen.macgrgo@yahoo.com');
+INSERT INTO email VALUES
+(102,'conrad.joline.sergo@yahoo.com');
+INSERT INTO email VALUES
+(103,'dwayne.keefe.mergo@yahoo.com');
+
+-> contact_no:
+
+INSERT INTO contact_no VALUES
+(101,3915486068);
+INSERT INTO contact_no VALUES
+(102,6836463900);
+INSERT INTO contact_no VALUES
+(103,3052294107);
+
+-> security:
+
+INSERT INTO security VALUES
+(1,'Drugs',1,200);
+INSERT INTO security VALUES
+(2,'Weapon',2,104);
+INSERT INTO security VALUES
+(3,'Food',3,233);
+
+-> flight:
+
+INSERT INTO flight VALUES
+('Ahmedabad','Chennai',NULL,11:13:00,'Scheduled',3,'Vistara','Domestic');
+INSERT INTO flight VALUES
+('Mumbai','Ahmedabad',11:13:00,NULL,'Delayed',3,'Go Air','Domestic');
+
+-> Baggage_and_cargo:
+
+INSERT INTO Baggage_and_cargo VALUES
+(1,101,6,'Passenger',NULL);
+INSERT INTO Baggage_and_cargo VALUES
+(2,102,11,'Passenger',NULL);
+INSERT INTO Baggage_and_cargo VALUES
+(3,103,7,'Passenger',NULL);
+
+-> Ticket:
+
+INSERT INTO Ticket VALUES
+(101,'6E2086','2A','Economy',8000);
+INSERT INTO Ticket VALUES
+(102,'6E2086','3B','Economy',8000);
+INSERT INTO Ticket VALUES
+(103,'6E2086','4B','Economy',8000);
+
+-> Gate:
+
+INSERT INTO Gate VALUES
+(1,'YES','Indigo');
+INSERT INTO Gate VALUES
+(2,'YES','Air India');
+
+-> Vendor:
+
+INSERT INTO Vendor VALUES
+(1,'Food','Subway',1);
+INSERT INTO Vendor VALUES
+(2,'Jewellery','Tanishq',2);
+
+-> Airport_Departmant_Data:
+
+INSERT INTO Airport_Department_Data VALUES
+(1,'Security');
+INSERT INTO Airport_Department_Data VALUES
+(2,'Baggage');
+
+-> Airline:
+
+INSERT INTO Airline VALUES
+('Akasha',1,2);
+INSERT INTO Airline VALUES
+('Indigo',2,2);
+
+-> Aircraft:
+
+INSERT INTO Aircraft VALUES
+(71359,'Under Maintainence','Cargo',0,'Akasha');
+INSERT INTO Aircraft VALUES
+(36547,'Accessible','Passenger',250,'Indigo');
+
+-> Employee:
+
+INSERT INTO Employee VALUES
+(1,'Odella',1);
+INSERT INTO Employee VALUES
+(2,'Agata',1);
+
+-> Inquiry:
+
+INSERT INTO Inquiry VALUES
+(1,'Solved',1,105);
+INSERT INTO Inquiry VALUES
+(2,'Pending',2,206);
+
+-> Runway_data:
+
+INSERT INTO Runway_data VALUES
+(1,5,'Accessible','YES');
+INSERT INTO Runway_data VALUES
+(2,7,'Accessible','YES');
+
+-> Weather:
+
+INSERT INTO Weather VALUES
+(2:36:00,00:10:00,1013);
+INSERT INTO Weather VALUES
+(7:50:00,00:54:00,1025);
+
+
+
